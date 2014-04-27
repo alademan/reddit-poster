@@ -34,7 +34,7 @@ class Submission(object):
         if self.date:
             submit_title += time.strftime(" - %b. %d")
 
-        # Remove the signature from here
+        # Remove the signature from here, maybe.. not?
         try:
             r = praw.Reddit(user_agent="reddit-poster")
             r.login(self.username, self.password)
@@ -78,6 +78,9 @@ class TopicSubmission(Submission):
 # A text file containing a list of topics for a TopicSubmission
 # CHANGE THIS TO STOP POPPING THE TOPIC
 #   Instead, keep track of line numbers or something and rotate through.
+#       No: Pop it off top and then stick it on the bottom!
+#   Also need to find a way to pair message body with topic, if possible/desired.
+#       (may not need to be, just keep the bodies simple and generic and should be good to go from there.
 class TopicList(object):
     def __init__(self, location):
         self.location = location
